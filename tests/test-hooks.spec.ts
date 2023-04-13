@@ -6,6 +6,6 @@ test.describe("navigation", () => {
     });
 
     test("main navigation",async ({ page }) => {
-        await expect(page).toHaveURL("https://playwright.dev/error");
+        await expect(page).toHaveURL("https://playwright.dev/");
     })
 });
