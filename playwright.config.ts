@@ -1,10 +1,28 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices, expect } from '@playwright/test';
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
 // require('dotenv').config();
+
+// Add custom matcher
+expect.extend({
+  toBeWithinRange(received: number, floor: number, ceiling: number) {
+    const pass = received >= floor && received <= ceiling;
+    if (pass) {
+      return {
+        message: () => 'passed',
+        pass: true
+      };
+    } else {
+      return {
+        message: () => 'failed',
+        pass: false
+      };
+    }
+  }
+});
 
 /**
  * See https://playwright.dev/docs/test-configuration.
