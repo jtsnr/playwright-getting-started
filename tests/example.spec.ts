@@ -16,3 +16,11 @@ test('get started link', async ({ page }) => {
   // Expects the URL to contain intro.
   await expect(page).toHaveURL(/.*intro/);
 });
+
+test('numeric ranges', () => {
+  expect(90).toBeWithinRange(90, 110);
+  expect(100).toBeWithinRange(90, 110);
+  expect(110).toBeWithinRange(90, 110);
+  expect(89).not.toBeWithinRange(90, 100);
+  expect(111).not.toBeWithinRange(90, 110);
+});
